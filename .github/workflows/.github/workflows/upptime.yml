@@ -1,0 +1,17 @@
+name: CI
+on:
+  schedule:
+    - cron: "0 */6 * * *"
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: upptime/uptime-monitor@v1
+      - uses: upptime/uptime-summary@v1
+      - uses: upptime/graphs@v1
+      - uses: upptime/status-page@v1
